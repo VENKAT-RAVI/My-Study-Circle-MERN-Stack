@@ -1,0 +1,73 @@
+{
+  "name": "backend",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "serve": "cross-env node ./dist/bin/www.js",
+    "transpile": "babel ./server --out-dir dist",
+    "build": "npm-run-all clean transpile",
+    "watch:dev": "nodemon",
+    "clean": "rimraf dist",
+    "dev": "cross-env NODE_ENV=development npm-run-all build serve",
+    "prod": "cross-env NODE_ENV=production npm-run-all build serve"
+  },
+  "dependencies": {
+    "@babel/cli": "^7.13.10",
+    "@babel/core": "^7.13.10",
+    "@babel/preset-env": "^7.13.15",
+    "@babel/preset-react": "^7.13.13",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "cross-env": "^7.0.3",
+    "debug": "^2.6.9",
+    "dotenv": "^8.2.0",
+    "express": "^4.16.4",
+    "express-jwt": "^6.0.0",
+    "express-session": "^1.17.1",
+    "express-validator": "^6.10.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.12.2",
+    "morgan": "^1.9.1",
+    "nodemon": "^2.0.7",
+    "npm-run-all": "^4.1.5",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
+    "passport-local-mongoose": "^6.1.0",
+    "rimraf": "^3.0.2",
+    "transform-runtime": "0.0.0",
+    "uuid": "^8.3.2",
+    "uuidv1": "^1.6.14"
+  },
+  "babel": {
+    "presets": [
+      [
+        "@babel/preset-env",
+        {
+          "targets": {
+            "browsers": [
+              "last 2 chrome versions"
+            ]
+          },
+          "useBuiltIns": "usage"
+        }
+      ],
+      "@babel/preset-react"
+    ]
+  },
+  "nodemonConfig": {
+    "exec": "npm run dev",
+    "watch": [
+      "server/*"
+    ],
+    "ignore": []
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.2.2",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1"
+  }
+}
